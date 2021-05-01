@@ -1,4 +1,4 @@
-import "./LeadAddPage.css";
+import "./LeadAddView.css";
 import "../Table.css";
 
 import { useState } from "react";
@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import FormSection from "../components/FormSection";
 import CustomButton from "../components/CustomButton";
 
-function LeadAddPage() {
+function LeadAddView() {
   const [formState, setFormState] = useState({
     leadName: "",
     leadPhone: "",
@@ -141,4 +141,4 @@ function LeadAddPage() {
   );
 }
 
-export default LeadAddPage;
+export default LeadAddView;

@@ -1,4 +1,4 @@
-import "./RegisterPage.css";
+import "./RegisterView.css";
 
 import { useState } from "react";
 import Outline from "../components/Outline";
@@ -6,7 +6,7 @@ import Logo from "../components/Logo";
 import FormSection from "../components/FormSection";
 import CustomButton from "../components/CustomButton";
 
-function RegisterPage() {
+function RegisterView() {
   const [formState, setFormState] = useState({
     username: "",
     password: "",
@@ -66,4 +66,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default RegisterView;

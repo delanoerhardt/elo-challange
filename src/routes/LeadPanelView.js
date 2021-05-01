@@ -1,11 +1,11 @@
-import "./LeadPanelPage.css";
+import "./LeadPanelView.css";
 import "../Table.css";
 
 import Outline from "../components/Outline";
 import Header from "../components/Header";
 import CustomButton from "../components/CustomButton";
 
-function LeadPanelPage() {
+function LeadPanelView() {
   const handleOnClick = (event) => {
     console.log(event);
   };
@@ -40,4 +40,4 @@ function LeadPanelPage() {
   );
 }
 
-export default LeadPanelPage;
+export default LeadPanelView;
