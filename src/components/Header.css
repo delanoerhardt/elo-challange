@@ -2,7 +2,8 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+  width: 100%;
 }
 
 .header-container > div {
