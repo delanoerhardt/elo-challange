@@ -2,6 +2,7 @@
   border-style: solid;
   border-color: black;
   border-width: 1px;
+  color: black;
 }
 
 .row {
@@ -12,6 +13,7 @@
 
 .tab-header {
   background-color: #9e9e9e;
+  color: white;
 }
 
 .row .el + .el {
@@ -19,14 +21,26 @@
 }
 
 .el {
-  padding: 15px 0px;
   flex-grow: 1;
 }
 
-.gray-el {
+.gray-row {
   background-color: #e6e6e6;
 }
 
-.white-el {
+.white-row {
   background-color: #ffffff;
+}
+
+.padded {
+  padding: 15px 0px;
+}
+
+.small {
+  width: 22px;
+  max-width: 22px;
+}
+
+.long {
+  min-width: 140px;
 }

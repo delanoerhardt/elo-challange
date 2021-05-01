@@ -28,9 +28,9 @@ function LeadPanelPage() {
         </div>
         <div className="tab">
           <div className="row tab-header">
-            <div className="el">Cliente em Potencial</div>
-            <div className="el">Dados Confirmados</div>
-            <div className="el">Reunião Agendada</div>
+            <div className="el padded">Cliente em Potencial</div>
+            <div className="el padded">Dados Confirmados</div>
+            <div className="el padded">Reunião Agendada</div>
           </div>
           <div className="row"> </div>
         </div>
