@@ -2,9 +2,9 @@ import "./Logo.css";
 import logoPng from "../logo-EloGroup-branco.png";
 
 function Logo(props) {
-  const inlineStyle = { maxWidth: props.maxSize };
+  const styleMaxSize = { maxWidth: props.maxSize };
   return (
-    <div className="logo" style={inlineStyle}>
+    <div className="logo" style={styleMaxSize}>
       <img className="logo-png" src={logoPng} alt="EloGroup logo" />
     </div>
   );
