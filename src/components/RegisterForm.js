@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./RegisterForm.css";
+import "./FormSection";
+import FormSection from "./FormSection";
 
 function RegisterForm() {
   const [formState, setFormState] = useState({
@@ -25,38 +27,30 @@ function RegisterForm() {
 
   return (
     <form className="RegisterForm" onSubmit={handleSubmit}>
-      <div className="form-section">
-        <label htmlFor="username">Usuário *</label>
-        <br />
-        <textarea
-          class="boxsizing-border form-input-text"
-          id="username"
-          value={formState.username}
-          onChange={handleChange}
-        ></textarea>
-      </div>
-      <div className="form-section">
-        <label htmlFor="password">Senha *</label>
-        <br />
-        <input
-          class="boxsizing-border form-input-text"
-          id="password"
-          type="password"
-          value={formState.password}
-          onChange={handleChange}
-        ></input>
-      </div>
-      <div className="form-section">
-        <label htmlFor="confirmPassword">Confirmação da senha *</label>
-        <br />
-        <input
-          class="boxsizing-border form-input-text"
-          id="confirmPassword"
-          type="password"
-          value={formState.passwordConfirm}
-          onChange={handleChange}
-        ></input>
-      </div>
+      <FormSection
+        id="username"
+        type="text"
+        valueOfState={formState.username}
+        handleChange={handleChange}
+      >
+        Usuário *
+      </FormSection>
+      <FormSection
+        id="password"
+        type="password"
+        valueOfState={formState.password}
+        handleChange={handleChange}
+      >
+        Senha *
+      </FormSection>
+      <FormSection
+        id="confirmPassword"
+        type="password"
+        valueOfState={formState.confirmPassword}
+        handleChange={handleChange}
+      >
+        Confirmação da senha *
+      </FormSection>
       <div className="form-section">
         <input type="submit" className="form-button" value="Registrar" />
       </div>

@@ -2,27 +2,6 @@
   margin-top: 50px;
 }
 
-.form-section {
-  margin: 20px;
-  text-align: left;
-}
-
-.form-input-text {
-  padding-top: 8px;
-  margin-top: 8px;
-  width: 100%;
-  height: fit-content;
-  min-height: 31px;
-  text-indent: 4px;
-  font-size: 15px;
-  resize: none;
-}
-.boxsizing-border {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 .form-button {
   width: 100%;
   margin-top: 5px;
