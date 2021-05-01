@@ -1,7 +1,11 @@
 import "./CustomButton.css";
 
 function CustomButton(props) {
-  const styleNewColor = { backgroundColor: props.color, border: props.border };
+  const styleNewColor = {
+    backgroundColor: props.color,
+    border: props.border,
+    color: props.textColor,
+  };
   return (
     <input
       type={props.type}

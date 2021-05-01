@@ -18,6 +18,7 @@ function LeadPanelPage() {
             <CustomButton
               type="button"
               color="#2196f3"
+              textColor="white"
               border="none"
               value="Novo Lead (+)"
               onClick={handleOnClick}
