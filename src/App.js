@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Suspense } from "react";
 
 import registerPage from "./routes/RegisterPage";
+import leadPanelPage from "./routes/LeadPanelPage";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       <Router>
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
-            <Route exact path="/" component={registerPage} />
+            <Route exact path="/register" component={registerPage} />
+            <Route exact path="/lead-panel" component={leadPanelPage} />
           </Switch>
         </Suspense>
       </Router>
