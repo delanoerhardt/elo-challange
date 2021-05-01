@@ -1,0 +1,8 @@
+.add-lead-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-lead-form > div {
+  flex-grow: 1;
+}

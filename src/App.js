@@ -4,6 +4,7 @@ import { Suspense } from "react";
 
 import registerPage from "./routes/RegisterPage";
 import leadPanelPage from "./routes/LeadPanelPage";
+import leadAddPage from "./routes/LeadAddPage";
 
 function App() {
   return (
@@ -13,23 +14,10 @@ function App() {
           <Switch>
             <Route exact path="/register" component={registerPage} />
             <Route exact path="/lead-panel" component={leadPanelPage} />
+            <Route exact path="/lead-add" component={leadAddPage} />
           </Switch>
         </Suspense>
       </Router>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
     </div>
   );
 }
