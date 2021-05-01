@@ -1,0 +1,32 @@
+.tab {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.tab-header {
+  background-color: #9e9e9e;
+}
+
+.row .el + .el {
+  border-left: 1px solid black;
+}
+
+.el {
+  padding: 15px 0px;
+  flex-grow: 1;
+}
+
+.gray-el {
+  background-color: #e6e6e6;
+}
+
+.white-el {
+  background-color: #ffffff;
+}

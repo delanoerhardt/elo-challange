@@ -1,4 +1,5 @@
 import "./LeadPanelPage.css";
+import "../Table.css";
 
 import Outline from "../components/Outline";
 import Header from "../components/Header";
