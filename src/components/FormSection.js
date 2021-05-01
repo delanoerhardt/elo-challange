@@ -1,14 +1,20 @@
 import "./FormSection.css";
 
 function FormSection(props) {
+  const styleElement = {
+    maxWidth: props.maxWidth,
+  };
   return (
-    <div className="form-section">
-      <label htmlFor={props.id}>{props.children}</label>
+    <div className="form-section" style={styleElement}>
+      <label htmlFor={props.id} style={styleElement}>
+        {props.children}
+      </label>
       <br />
       <input
         class="boxsizing-border form-input-text"
         id={props.id}
         type={props.type}
+        style={styleElement}
         value={props.valueOfState}
         onChange={props.handleChange}
       ></input>
