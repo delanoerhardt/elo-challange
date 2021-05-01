@@ -38,22 +38,24 @@ function RegisterForm() {
       <div className="form-section">
         <label htmlFor="password">Senha *</label>
         <br />
-        <textarea
+        <input
           class="boxsizing-border form-input-text"
           id="password"
+          type="password"
           value={formState.password}
           onChange={handleChange}
-        ></textarea>
+        ></input>
       </div>
       <div className="form-section">
         <label htmlFor="confirmPassword">Confirmação da senha *</label>
         <br />
-        <textarea
+        <input
           class="boxsizing-border form-input-text"
           id="confirmPassword"
+          type="password"
           value={formState.passwordConfirm}
           onChange={handleChange}
-        ></textarea>
+        ></input>
       </div>
       <div className="form-section">
         <input type="submit" className="form-button" value="Registrar" />
