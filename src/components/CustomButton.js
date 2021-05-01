@@ -1,7 +1,7 @@
 import "./CustomButton.css";
 
 function CustomButton(props) {
-  const styleNewColor = {
+  const styleElement = {
     backgroundColor: props.color,
     border: props.border,
     color: props.textColor,
@@ -9,7 +9,7 @@ function CustomButton(props) {
   return (
     <input
       type={props.type}
-      style={styleNewColor}
+      style={styleElement}
       className="form-button"
       value={props.value}
       onClick={props.onClick}
