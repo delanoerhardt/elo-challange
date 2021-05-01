@@ -1,7 +1,8 @@
-import { useState } from "react";
 import "./RegisterForm.css";
-import "./FormSection";
+
+import { useState } from "react";
 import FormSection from "./FormSection";
+import CustomButton from "./CustomButton";
 
 function RegisterForm() {
   const [formState, setFormState] = useState({
@@ -52,7 +53,7 @@ function RegisterForm() {
         Confirmação da senha *
       </FormSection>
       <div className="form-section">
-        <input type="submit" className="form-button" value="Registrar" />
+        <CustomButton type="submit" color="white" value="Registrar" />
       </div>
     </form>
   );
