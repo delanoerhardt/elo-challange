@@ -7,9 +7,7 @@ function FormSection(props) {
 
   return (
     <div className="form-section" style={styleElement}>
-      <label htmlFor={props.id} style={styleElement}>
-        {props.children}
-      </label>
+      <label htmlFor={props.id}>{props.children}</label>
       <br />
       <input
         className="boxsizing-border form-input-text"
