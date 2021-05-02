@@ -64,7 +64,13 @@ function LeadPanelView({ handleAddNewPage, getLeads, updateLeadPosition }) {
     draggableTd.style.width = target.clientWidth + "px";
 
     // Set color
-    draggableElement.classList.add(target.parentNode.classList);
+    if (index % 2 === 0) {
+      draggableElement.classList.add("gray-row");
+      draggableElement.classList.remove("white-row");
+    } else {
+      draggableElement.classList.add("white-row");
+      draggableElement.classList.remove("gray-row");
+    }
 
     document.addEventListener("mousemove", drag);
     document.addEventListener("mouseup", finishDrag);
