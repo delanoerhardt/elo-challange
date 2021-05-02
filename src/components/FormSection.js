@@ -15,6 +15,7 @@ function FormSection(props) {
         type={props.type}
         style={styleElement}
         value={props.valueOfState}
+        readOnly={props.readOnly}
         onChange={props.handleChange}
       ></input>
     </div>
