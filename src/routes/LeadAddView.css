@@ -6,3 +6,9 @@
 .add-lead-form > div {
   flex-grow: 1;
 }
+
+.confirm-bg-div {
+  z-index: 1;
+  background-color: #ffffff;
+  background-clip: margin-box;
+}

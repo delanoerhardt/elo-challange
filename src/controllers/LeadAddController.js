@@ -17,11 +17,13 @@ function LeadAddController() {
     });
 
     sendLeads(leadsArray);
+  };
 
+  const goBack = () => {
     history.push("/lead-panel");
   };
 
-  return <LeadAddView handleSubmit={handleSubmit} />;
+  return <LeadAddView handleSubmit={handleSubmit} goBack={goBack} />;
 }
 
 export default LeadAddController;

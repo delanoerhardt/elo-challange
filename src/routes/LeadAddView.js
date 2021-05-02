@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import FormSection from "../components/FormSection";
 import CustomButton from "../components/CustomButton";
 
-function LeadAddView({ handleSubmit }) {
+function LeadAddView({ handleSubmit, goBack }) {
   const [formState, setFormState] = useState({
     leadName: "",
     leadPhone: "",
@@ -18,6 +18,8 @@ function LeadAddView({ handleSubmit }) {
     analyticsCheckbox: false,
     bpmCheckbox: false,
   });
+
+  const [formDisabled, setFormDisabled] = useState(false);
 
   const handleChange = (event) => {
     if (event.target.type === "checkbox") {
@@ -89,6 +91,10 @@ function LeadAddView({ handleSubmit }) {
       return;
     }
 
+    document.getElementById("confirm-form").classList.remove("hidden");
+
+    setFormDisabled(true);
+
     handleSubmit(formState, event);
   };
 
@@ -96,12 +102,26 @@ function LeadAddView({ handleSubmit }) {
     <div className="center">
       <Outline>
         <Header>Novo lead</Header>
+        <div className="hidden center" id="confirm-form">
+          <Outline className="confirm-bg-div">
+            <p className="padded">Lead {formState.leadName} adicionado!</p>
+            <CustomButton
+              type="button"
+              color="#2196f3"
+              textColor="white"
+              border="none"
+              value="Confirmar"
+              onClick={goBack}
+            />
+          </Outline>
+        </div>
         <form className="add-lead-form" onSubmit={handleSubmitWrapped}>
           <div>
             <FormSection
               id="leadName"
               type="text"
               maxWidth="280px"
+              readOnly={formDisabled}
               valueOfState={formState.leadName}
               handleChange={handleChange}
             >
@@ -111,6 +131,7 @@ function LeadAddView({ handleSubmit }) {
               id="leadPhone"
               type="tel"
               maxWidth="280px"
+              readOnly={formDisabled}
               valueOfState={formState.leadPhone}
               handleChange={handleChange}
             >
@@ -120,6 +141,7 @@ function LeadAddView({ handleSubmit }) {
               id="leadEmail"
               type="email"
               maxWidth="280px"
+              readOnly={formDisabled}
               valueOfState={formState.leadEmail}
               handleChange={handleChange}
             >
@@ -136,6 +158,7 @@ function LeadAddView({ handleSubmit }) {
                       type="checkbox"
                       id="allChecked"
                       onChange={handleChange}
+                      readOnly={formDisabled}
                       checked={formState.allChecked}
                     ></input>
                   </th>
@@ -149,6 +172,7 @@ function LeadAddView({ handleSubmit }) {
                       type="checkbox"
                       id="rpaCheckbox"
                       onChange={handleChange}
+                      readOnly={formDisabled}
                       checked={formState.rpaCheckbox}
                     ></input>
                   </td>
@@ -164,6 +188,7 @@ function LeadAddView({ handleSubmit }) {
                       type="checkbox"
                       id="digProdCheckbox"
                       onChange={handleChange}
+                      readOnly={formDisabled}
                       checked={formState.digProdCheckbox}
                     ></input>
                   </td>
@@ -179,6 +204,7 @@ function LeadAddView({ handleSubmit }) {
                       type="checkbox"
                       id="analyticsCheckbox"
                       onChange={handleChange}
+                      readOnly={formDisabled}
                       checked={formState.analyticsCheckbox}
                     ></input>
                   </td>
@@ -194,6 +220,7 @@ function LeadAddView({ handleSubmit }) {
                       type="checkbox"
                       id="bpmCheckbox"
                       onChange={handleChange}
+                      readOnly={formDisabled}
                       checked={formState.bpmCheckbox}
                     ></input>
                   </td>
@@ -216,6 +243,7 @@ function LeadAddView({ handleSubmit }) {
                 type="submit"
                 color="#2196f3"
                 textColor="white"
+                readOnly={formDisabled}
                 border="none"
                 value="Salvar"
               />
