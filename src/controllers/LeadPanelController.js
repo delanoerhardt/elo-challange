@@ -15,8 +15,6 @@ function LeadPanelController() {
   const getLeads = () => {
     const leadsObj = getLeadsFromLocalStorage();
 
-    console.log(leadsObj.leads.length);
-
     if (leadsObj.leads.length === 0) {
       leadsObj.leads.push({ position: 2, info: { name: "" } });
     }

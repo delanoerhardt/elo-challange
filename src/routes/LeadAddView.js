@@ -12,49 +12,51 @@ function LeadAddView({ handleSubmit, goBack }) {
     leadName: "",
     leadPhone: "",
     leadEmail: "",
-    allChecked: false,
+  });
+
+  const [checksState, setChecksState] = useState({
     rpaCheckbox: false,
     digProdCheckbox: false,
     analyticsCheckbox: false,
     bpmCheckbox: false,
   });
 
+  const [allChecked, setAllChecked] = useState(false);
+
   const [formDisabled, setFormDisabled] = useState(false);
 
   const handleChange = (event) => {
-    if (event.target.type === "checkbox") {
-      event.persist();
-      document.getElementById("options-table").classList.remove("invalid");
-    } else {
-      event.preventDefault();
-      event.target.classList.remove("invalid");
-    }
+    event.preventDefault();
+    event.target.classList.remove("invalid");
 
     const newFormState = { ...formState };
 
-    newFormState[event.target.id] =
-      event.target.type === "checkbox"
-        ? !formState[event.target.id]
-        : event.target.value;
-
-    if (event.target.id === "allChecked") {
-      newFormState["rpaCheckbox"] = newFormState[
-        "digProdCheckbox"
-      ] = newFormState["analyticsCheckbox"] = newFormState[
-        "bpmCheckbox"
-      ] = !formState[event.target.id];
-    } else {
-      if (
-        newFormState["rpaCheckbox"] === true &&
-        newFormState["digProdCheckbox"] === true &&
-        newFormState["analyticsCheckbox"] === true &&
-        newFormState["bpmCheckbox"] === true
-      )
-        newFormState["allChecked"] = true;
-      else newFormState["allChecked"] = false;
-    }
+    newFormState[event.target.id] = event.target.value;
 
     setFormState(newFormState);
+  };
+
+  const handleChangeChecks = (event) => {
+    event.persist();
+    document.getElementById("options-table").classList.remove("invalid");
+
+    const newChecksState = { ...checksState };
+
+    newChecksState[event.target.id] = !checksState[event.target.id];
+
+    if (event.target.id === "allChecked") {
+      Object.keys(checksState).forEach(
+        (key) => (newChecksState[key] = !allChecked)
+      );
+
+      setAllChecked(!allChecked);
+    } else if (
+      Object.values(newChecksState).filter((check) => !check).length === 0
+    )
+      setAllChecked(true);
+    else setAllChecked(false);
+
+    setChecksState(newChecksState);
   };
 
   const handleSubmitWrapped = (event) => {
@@ -77,12 +79,7 @@ function LeadAddView({ handleSubmit, goBack }) {
       valid = false;
     }
 
-    if (
-      formState.rpaCheckbox === false &&
-      formState.digProdCheckbox === false &&
-      formState.analyticsCheckbox === false &&
-      formState.bpmCheckbox === false
-    ) {
+    if (Object.values(checksState).filter((check) => check).length === 0) {
       document.getElementById("options-table").classList.add("invalid");
       valid = false;
     }
@@ -95,7 +92,7 @@ function LeadAddView({ handleSubmit, goBack }) {
 
     setFormDisabled(true);
 
-    handleSubmit(formState, event);
+    handleSubmit(formState, checksState, event);
   };
 
   return (
@@ -157,9 +154,9 @@ function LeadAddView({ handleSubmit, goBack }) {
                     <input
                       type="checkbox"
                       id="allChecked"
-                      onChange={handleChange}
+                      onChange={handleChangeChecks}
                       readOnly={formDisabled}
-                      checked={formState.allChecked}
+                      checked={allChecked}
                     ></input>
                   </th>
                   <th className="long"></th>
@@ -171,9 +168,9 @@ function LeadAddView({ handleSubmit, goBack }) {
                     <input
                       type="checkbox"
                       id="rpaCheckbox"
-                      onChange={handleChange}
+                      onChange={handleChangeChecks}
                       readOnly={formDisabled}
-                      checked={formState.rpaCheckbox}
+                      checked={checksState.rpaCheckbox}
                     ></input>
                   </td>
                   <td>
@@ -187,9 +184,9 @@ function LeadAddView({ handleSubmit, goBack }) {
                     <input
                       type="checkbox"
                       id="digProdCheckbox"
-                      onChange={handleChange}
+                      onChange={handleChangeChecks}
                       readOnly={formDisabled}
-                      checked={formState.digProdCheckbox}
+                      checked={checksState.digProdCheckbox}
                     ></input>
                   </td>
                   <td>
@@ -203,9 +200,9 @@ function LeadAddView({ handleSubmit, goBack }) {
                     <input
                       type="checkbox"
                       id="analyticsCheckbox"
-                      onChange={handleChange}
+                      onChange={handleChangeChecks}
                       readOnly={formDisabled}
-                      checked={formState.analyticsCheckbox}
+                      checked={checksState.analyticsCheckbox}
                     ></input>
                   </td>
                   <td>
@@ -219,9 +216,9 @@ function LeadAddView({ handleSubmit, goBack }) {
                     <input
                       type="checkbox"
                       id="bpmCheckbox"
-                      onChange={handleChange}
+                      onChange={handleChangeChecks}
                       readOnly={formDisabled}
-                      checked={formState.bpmCheckbox}
+                      checked={checksState.bpmCheckbox}
                     ></input>
                   </td>
                   <td>

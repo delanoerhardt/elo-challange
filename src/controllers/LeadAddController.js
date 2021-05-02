@@ -8,12 +8,12 @@ import {
 function LeadAddController() {
   const history = useHistory();
 
-  const handleSubmit = (state, event) => {
+  const handleSubmit = (textState, checksState, event) => {
     const leadsArray = getLeads();
+
     leadsArray.leads.push({
       position: 0,
-      info: { ...state },
-      key: Math.random(), // Not the best but works...
+      info: { ...textState, ...checksState },
     });
 
     sendLeads(leadsArray);
