@@ -5,9 +5,34 @@ import Outline from "../components/Outline";
 import Header from "../components/Header";
 import CustomButton from "../components/CustomButton";
 
-function LeadPanelView() {
+function LeadPanelView({ handleAddNewPage, getLeads }) {
   const handleOnClick = (event) => {
-    console.log(event);
+    handleAddNewPage(event);
+  };
+
+  const getLeadsAsTableElements = () => {
+    const leadsObj = getLeads();
+
+    console.log(leadsObj);
+
+    return leadsObj.leads.map((lead, index) => {
+      const tableElementsList = [
+        <td className="el padded">{lead.info.leadName}</td>,
+        <td className="el padded"></td>,
+        <td className="el padded"></td>,
+      ];
+
+      return (
+        <tr
+          className={index % 2 === 0 ? "gray-row row" : "white-row row"}
+          key={lead.key}
+        >
+          {tableElementsList[(0 + lead.position) % 3]}
+          {tableElementsList[(1 + lead.position) % 3]}
+          {tableElementsList[(2 + lead.position) % 3]}
+        </tr>
+      );
+    });
   };
 
   return (
@@ -26,15 +51,16 @@ function LeadPanelView() {
             />
           </div>
         </div>
-        <div className="tab">
-          <div className="row tab-header">
-            <div className="el padded">Cliente em Potencial</div>
-            <div className="el padded">Dados Confirmados</div>
-            <div className="el padded">Reunião Agendada</div>
-          </div>
-          <div className="row"> </div>
-        </div>
-        {/* {getLeadsAsTableElements()} */}
+        <table className="tab">
+          <theade>
+            <tr className="tab-header">
+              <th className="padded">Cliente em Potencial</th>
+              <th className="padded">Dados Confirmados</th>
+              <th className="padded">Reunião Agendada</th>
+            </tr>
+          </theade>
+          <tbody>{getLeadsAsTableElements()}</tbody>
+        </table>
       </Outline>
     </div>
   );

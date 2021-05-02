@@ -12,7 +12,7 @@ function LeadAddView({ handleSubmit }) {
     leadName: "",
     leadPhone: "",
     leadEmail: "",
-    allMarked: false,
+    allChecked: false,
     rpaCheckbox: false,
     digProdCheckbox: false,
     analyticsCheckbox: false,
@@ -20,16 +20,74 @@ function LeadAddView({ handleSubmit }) {
   });
 
   const handleChange = (event) => {
-    event.preventDefault();
+    if (event.target.type === "checkbox") {
+      event.persist();
+      document.getElementById("options-table").classList.remove("invalid");
+    } else {
+      event.preventDefault();
+      event.target.classList.remove("invalid");
+    }
 
     const newFormState = { ...formState };
-    newFormState[event.target.id] = event.target.value;
+
+    newFormState[event.target.id] =
+      event.target.type === "checkbox"
+        ? !formState[event.target.id]
+        : event.target.value;
+
+    if (event.target.id === "allChecked") {
+      newFormState["rpaCheckbox"] = newFormState[
+        "digProdCheckbox"
+      ] = newFormState["analyticsCheckbox"] = newFormState[
+        "bpmCheckbox"
+      ] = !formState[event.target.id];
+    } else {
+      if (
+        newFormState["rpaCheckbox"] === true &&
+        newFormState["digProdCheckbox"] === true &&
+        newFormState["analyticsCheckbox"] === true &&
+        newFormState["bpmCheckbox"] === true
+      )
+        newFormState["allChecked"] = true;
+      else newFormState["allChecked"] = false;
+    }
 
     setFormState(newFormState);
   };
 
   const handleSubmitWrapped = (event) => {
     event.preventDefault();
+
+    let valid = true;
+
+    if (formState.leadName === "") {
+      document.getElementById("leadName").classList.add("invalid");
+      valid = false;
+    }
+
+    if (formState.leadPhone === "") {
+      document.getElementById("leadPhone").classList.add("invalid");
+      valid = false;
+    }
+
+    if (formState.leadEmail === "") {
+      document.getElementById("leadEmail").classList.add("invalid");
+      valid = false;
+    }
+
+    if (
+      formState.rpaCheckbox === false &&
+      formState.digProdCheckbox === false &&
+      formState.analyticsCheckbox === false &&
+      formState.bpmCheckbox === false
+    ) {
+      document.getElementById("options-table").classList.add("invalid");
+      valid = false;
+    }
+
+    if (!valid) {
+      return;
+    }
 
     handleSubmit(formState, event);
   };
@@ -43,7 +101,7 @@ function LeadAddView({ handleSubmit }) {
             <FormSection
               id="leadName"
               type="text"
-              maxWidth="400px"
+              maxWidth="280px"
               valueOfState={formState.leadName}
               handleChange={handleChange}
             >
@@ -52,7 +110,7 @@ function LeadAddView({ handleSubmit }) {
             <FormSection
               id="leadPhone"
               type="tel"
-              maxWidth="400px"
+              maxWidth="280px"
               valueOfState={formState.leadPhone}
               handleChange={handleChange}
             >
@@ -61,7 +119,7 @@ function LeadAddView({ handleSubmit }) {
             <FormSection
               id="leadEmail"
               type="email"
-              maxWidth="400px"
+              maxWidth="280px"
               valueOfState={formState.leadEmail}
               handleChange={handleChange}
             >
@@ -69,13 +127,14 @@ function LeadAddView({ handleSubmit }) {
             </FormSection>
           </div>
           <div style={{ marginTop: "50px" }}>
-            <div className="tab">
+            <div className="tab" id="options-table">
               <div className="row tab-header">
                 <div className="el small">
                   <input
                     type="checkbox"
-                    id="allMarked"
+                    id="allChecked"
                     onChange={handleChange}
+                    checked={formState.allChecked}
                   ></input>
                 </div>
                 <div className="el long"></div>
@@ -86,6 +145,7 @@ function LeadAddView({ handleSubmit }) {
                     type="checkbox"
                     id="rpaCheckbox"
                     onChange={handleChange}
+                    checked={formState.rpaCheckbox}
                   ></input>
                 </div>
                 <div className="el long">RPA</div>
@@ -96,6 +156,7 @@ function LeadAddView({ handleSubmit }) {
                     type="checkbox"
                     id="digProdCheckbox"
                     onChange={handleChange}
+                    checked={formState.digProdCheckbox}
                   ></input>
                 </div>
                 <div className="el long">Produto Digital</div>
@@ -106,6 +167,7 @@ function LeadAddView({ handleSubmit }) {
                     type="checkbox"
                     id="analyticsCheckbox"
                     onChange={handleChange}
+                    checked={formState.analyticsCheckbox}
                   ></input>
                 </div>
                 <div className="el long">Analytics</div>
@@ -116,6 +178,7 @@ function LeadAddView({ handleSubmit }) {
                     type="checkbox"
                     id="bpmCheckbox"
                     onChange={handleChange}
+                    checked={formState.bpmCheckbox}
                   ></input>
                 </div>
                 <div className="el long">BPM</div>
