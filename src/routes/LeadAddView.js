@@ -126,70 +126,91 @@ function LeadAddView({ handleSubmit }) {
               Email *
             </FormSection>
           </div>
-          <div style={{ marginTop: "50px" }}>
-            <div className="tab" id="options-table">
-              <div className="row tab-header">
-                <div className="el small">
-                  <input
-                    type="checkbox"
-                    id="allChecked"
-                    onChange={handleChange}
-                    checked={formState.allChecked}
-                  ></input>
-                </div>
-                <div className="el long"></div>
-              </div>
-              <div className="row gray-row">
-                <div className="el small">
-                  <input
-                    type="checkbox"
-                    id="rpaCheckbox"
-                    onChange={handleChange}
-                    checked={formState.rpaCheckbox}
-                  ></input>
-                </div>
-                <div className="el long">RPA</div>
-              </div>
-              <div className="row white-row">
-                <div className="el small">
-                  <input
-                    type="checkbox"
-                    id="digProdCheckbox"
-                    onChange={handleChange}
-                    checked={formState.digProdCheckbox}
-                  ></input>
-                </div>
-                <div className="el long">Produto Digital</div>
-              </div>
-              <div className="row gray-row">
-                <div className="el small">
-                  <input
-                    type="checkbox"
-                    id="analyticsCheckbox"
-                    onChange={handleChange}
-                    checked={formState.analyticsCheckbox}
-                  ></input>
-                </div>
-                <div className="el long">Analytics</div>
-              </div>
-              <div className="row white-row">
-                <div className="el small">
-                  <input
-                    type="checkbox"
-                    id="bpmCheckbox"
-                    onChange={handleChange}
-                    checked={formState.bpmCheckbox}
-                  ></input>
-                </div>
-                <div className="el long">BPM</div>
-              </div>
-              <div className="row gray-row">
-                <div className="el small">
-                  <div style={{ color: "#e6e6e6" }}>.</div>
-                </div>
-                <div className="el long"></div>
-              </div>
-            </div>
+          <div>
+            <div className="table-title">Oportunidades *</div>
+            <table id="options-table">
+              <thead>
+                <tr>
+                  <th>
+                    <input
+                      type="checkbox"
+                      id="allChecked"
+                      onChange={handleChange}
+                      checked={formState.allChecked}
+                    ></input>
+                  </th>
+                  <th className="long"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="gray-row">
+                  <td>
+                    <input
+                      type="checkbox"
+                      id="rpaCheckbox"
+                      onChange={handleChange}
+                      checked={formState.rpaCheckbox}
+                    ></input>
+                  </td>
+                  <td>
+                    <label className="long" htmlFor="rpaCheckbox">
+                      RPA
+                    </label>
+                  </td>
+                </tr>
+                <tr className="white-row">
+                  <td>
+                    <input
+                      type="checkbox"
+                      id="digProdCheckbox"
+                      onChange={handleChange}
+                      checked={formState.digProdCheckbox}
+                    ></input>
+                  </td>
+                  <td>
+                    <label className="long" htmlFor="digProdCheckbox">
+                      Produto Digital
+                    </label>
+                  </td>
+                </tr>
+                <tr className="gray-row">
+                  <td>
+                    <input
+                      type="checkbox"
+                      id="analyticsCheckbox"
+                      onChange={handleChange}
+                      checked={formState.analyticsCheckbox}
+                    ></input>
+                  </td>
+                  <td>
+                    <label className="long" htmlFor="analyticsCheckbox">
+                      Analytics
+                    </label>
+                  </td>
+                </tr>
+                <tr className="white-row">
+                  <td>
+                    <input
+                      type="checkbox"
+                      id="bpmCheckbox"
+                      onChange={handleChange}
+                      checked={formState.bpmCheckbox}
+                    ></input>
+                  </td>
+                  <td>
+                    <label className="long" htmlFor="bpmCheckbox">
+                      BPM
+                    </label>
+                  </td>
+                </tr>
+                <tr className="gray-row">
+                  <td>
+                    <div style={{ color: "#e6e6e6" }}>.</div>
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
             <div style={{ marginTop: "20px" }}>
               <CustomButton
                 type="submit"

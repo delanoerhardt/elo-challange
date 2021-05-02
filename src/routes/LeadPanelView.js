@@ -17,14 +17,14 @@ function LeadPanelView({ handleAddNewPage, getLeads }) {
 
     return leadsObj.leads.map((lead, index) => {
       const tableElementsList = [
-        <td className="el padded">{lead.info.leadName}</td>,
-        <td className="el padded"></td>,
-        <td className="el padded"></td>,
+        <td className="padded">{lead.info.leadName}</td>,
+        <td className="padded"></td>,
+        <td className="padded"></td>,
       ];
 
       return (
         <tr
-          className={index % 2 === 0 ? "gray-row row" : "white-row row"}
+          className={index % 2 === 0 ? "gray-row" : "white-row"}
           key={lead.key}
         >
           {tableElementsList[(0 + lead.position) % 3]}
@@ -51,14 +51,14 @@ function LeadPanelView({ handleAddNewPage, getLeads }) {
             />
           </div>
         </div>
-        <table className="tab">
-          <theade>
-            <tr className="tab-header">
+        <table>
+          <thead>
+            <tr>
               <th className="padded">Cliente em Potencial</th>
               <th className="padded">Dados Confirmados</th>
               <th className="padded">Reunião Agendada</th>
             </tr>
-          </theade>
+          </thead>
           <tbody>{getLeadsAsTableElements()}</tbody>
         </table>
       </Outline>
