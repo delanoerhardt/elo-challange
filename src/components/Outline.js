@@ -1,7 +1,8 @@
 import "./Outline.css";
 
 function Outline(props) {
-  return <div className="outline">{props.children}</div>;
+  const classAdded = "outline " + props.className;
+  return <div className={classAdded}>{props.children}</div>;
 }
 
 export default Outline;
