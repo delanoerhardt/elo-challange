@@ -6,7 +6,6 @@ function RegisterController() {
 
   const handleSubmit = (state, event) => {
     history.push("/lead-panel");
-    console.log(state);
   };
 
   const validatePassword = (password) => {
