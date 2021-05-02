@@ -4,6 +4,7 @@ function FormSection(props) {
   const styleElement = {
     maxWidth: props.maxWidth,
   };
+
   return (
     <div className="form-section" style={styleElement}>
       <label htmlFor={props.id} style={styleElement}>
@@ -11,7 +12,7 @@ function FormSection(props) {
       </label>
       <br />
       <input
-        class="boxsizing-border form-input-text"
+        className="boxsizing-border form-input-text"
         id={props.id}
         type={props.type}
         style={styleElement}
