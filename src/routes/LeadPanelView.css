@@ -12,10 +12,6 @@
   position: relative;
 }
 
-.hidden {
-  display: none;
-}
-
 .absolute {
   position: absolute;
   width: 100%;
