@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
-            <Route exact path="/register" component={registerController} />
+            <Route exact path="/" component={registerController} />
             <Route exact path="/lead-panel" component={leadPanelController} />
             <Route exact path="/lead-add" component={leadAddController} />
           </Switch>

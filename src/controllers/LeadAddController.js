@@ -13,7 +13,7 @@ function LeadAddController() {
     leadsArray.leads.push({
       position: 0,
       info: { ...state },
-      key: Math.random(),
+      key: Math.random(), // Not the best but works...
     });
 
     console.log(leadsArray);
