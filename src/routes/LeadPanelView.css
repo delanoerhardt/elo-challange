@@ -7,3 +7,16 @@
 .add-lead-button-lower-div {
   max-width: 160px;
 }
+
+.relative {
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+.absolute {
+  position: absolute;
+  width: 100%;
+}

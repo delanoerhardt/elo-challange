@@ -16,8 +16,6 @@ function LeadAddController() {
       key: Math.random(), // Not the best but works...
     });
 
-    console.log(leadsArray);
-
     sendLeads(leadsArray);
 
     history.push("/lead-panel");
