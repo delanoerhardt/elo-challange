@@ -7,11 +7,16 @@ import Header from "../components/Header";
 import FormSection from "../components/FormSection";
 import CustomButton from "../components/CustomButton";
 
-function LeadAddView() {
+function LeadAddView({ handleSubmit }) {
   const [formState, setFormState] = useState({
     leadName: "",
     leadPhone: "",
     leadEmail: "",
+    allMarked: false,
+    rpaCheckbox: false,
+    digProdCheckbox: false,
+    analyticsCheckbox: false,
+    bpmCheckbox: false,
   });
 
   const handleChange = (event) => {
@@ -22,21 +27,18 @@ function LeadAddView() {
 
     setFormState(newFormState);
   };
-  const handleChange2 = (event) => {
-    console.log(event);
-  };
 
-  const handleSubmit = (event) => {
+  const handleSubmitWrapped = (event) => {
     event.preventDefault();
 
-    console.log(formState);
+    handleSubmit(formState, event);
   };
 
   return (
     <div className="center">
       <Outline>
         <Header>Novo lead</Header>
-        <form className="add-lead-form" onSubmit={handleSubmit}>
+        <form className="add-lead-form" onSubmit={handleSubmitWrapped}>
           <div>
             <FormSection
               id="leadName"
@@ -73,7 +75,7 @@ function LeadAddView() {
                   <input
                     type="checkbox"
                     id="allMarked"
-                    onChange={handleChange2}
+                    onChange={handleChange}
                   ></input>
                 </div>
                 <div className="el long"></div>
@@ -83,7 +85,7 @@ function LeadAddView() {
                   <input
                     type="checkbox"
                     id="rpaCheckbox"
-                    onChange={handleChange2}
+                    onChange={handleChange}
                   ></input>
                 </div>
                 <div className="el long">RPA</div>
@@ -93,7 +95,7 @@ function LeadAddView() {
                   <input
                     type="checkbox"
                     id="digProdCheckbox"
-                    onChange={handleChange2}
+                    onChange={handleChange}
                   ></input>
                 </div>
                 <div className="el long">Produto Digital</div>
@@ -103,7 +105,7 @@ function LeadAddView() {
                   <input
                     type="checkbox"
                     id="analyticsCheckbox"
-                    onChange={handleChange2}
+                    onChange={handleChange}
                   ></input>
                 </div>
                 <div className="el long">Analytics</div>
@@ -113,7 +115,7 @@ function LeadAddView() {
                   <input
                     type="checkbox"
                     id="bpmCheckbox"
-                    onChange={handleChange2}
+                    onChange={handleChange}
                   ></input>
                 </div>
                 <div className="el long">BPM</div>

@@ -6,7 +6,7 @@ import Logo from "../components/Logo";
 import FormSection from "../components/FormSection";
 import CustomButton from "../components/CustomButton";
 
-function RegisterView() {
+function RegisterView({ handleSubmit, validatePassword }) {
   const [formState, setFormState] = useState({
     username: "",
     password: "",
@@ -16,23 +16,49 @@ function RegisterView() {
   const handleChange = (event) => {
     event.preventDefault();
 
+    event.target.classList.remove("invalid");
+
     const newFormState = { ...formState };
     newFormState[event.target.id] = event.target.value;
 
     setFormState(newFormState);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmitWrapped = (event) => {
     event.preventDefault();
 
-    console.log(formState);
+    let valid = true;
+
+    if (formState.username === "") {
+      document.getElementById("username").classList.add("invalid");
+      valid = false;
+    }
+
+    if (!validatePassword(formState.password)) {
+      document.getElementById("password").classList.add("invalid");
+      valid = false;
+    }
+
+    if (
+      formState.confirmPassword === "" ||
+      formState.password !== formState.confirmPassword
+    ) {
+      document.getElementById("confirmPassword").classList.add("invalid");
+      valid = false;
+    }
+
+    if (!valid) {
+      return;
+    }
+
+    handleSubmit(formState, event);
   };
 
   return (
     <div className="center">
       <Outline>
         <Logo />
-        <form className="register-form" onSubmit={handleSubmit}>
+        <form className="register-form" onSubmit={handleSubmitWrapped}>
           <FormSection
             id="username"
             type="text"

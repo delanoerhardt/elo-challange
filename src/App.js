@@ -2,9 +2,9 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Suspense } from "react";
 
-import registerView from "./routes/RegisterView";
-import leadPanelView from "./routes/LeadPanelView";
-import leadAddView from "./routes/LeadAddView";
+import registerController from "./controllers/RegisterControllers";
+import leadPanelController from "./controllers/LeadPanelController";
+import leadAddController from "./controllers/LeadAddController";
 
 function App() {
   return (
@@ -12,9 +12,9 @@ function App() {
       <Router>
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
-            <Route exact path="/register" component={registerView} />
-            <Route exact path="/lead-panel" component={leadPanelView} />
-            <Route exact path="/lead-add" component={leadAddView} />
+            <Route exact path="/register" component={registerController} />
+            <Route exact path="/lead-panel" component={leadPanelController} />
+            <Route exact path="/lead-add" component={leadAddController} />
           </Switch>
         </Suspense>
       </Router>
