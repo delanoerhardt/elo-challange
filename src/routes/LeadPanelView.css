@@ -6,6 +6,15 @@
 
 .add-lead-button-lower-div {
   max-width: 160px;
+  width: 100%;
+  float: left;
+}
+
+.help-div {
+  max-width: 35px;
+  width: 100%;
+  float: right;
+  margin-left: 15px;
 }
 
 .relative {

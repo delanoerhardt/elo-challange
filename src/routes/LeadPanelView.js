@@ -147,10 +147,37 @@ function LeadPanelView({ handleAddNewPage, getLeads, updateLeadPosition }) {
     });
   };
 
+  const showHelp = (event) => {
+    event.preventDefault();
+
+    document.getElementById("help-dialog").classList.remove("hidden");
+  };
+
+  const hideHelp = (event) => {
+    event.preventDefault();
+
+    document.getElementById("help-dialog").classList.add("hidden");
+  };
+
   return (
     <div className="center">
       <Outline>
         <Header>Painel de leads</Header>
+        <div className="hidden center" id="help-dialog" style={{ zIndex: 1 }}>
+          <Outline className="confirm-bg-div">
+            <p className="padded">
+              Clique e arraste o lead para a próxima coluna.
+            </p>
+            <CustomButton
+              type="button"
+              color="#2196f3"
+              textColor="white"
+              border="none"
+              value="Fechar"
+              onClick={hideHelp}
+            />
+          </Outline>
+        </div>
         <div className="add-lead-button-upper-div">
           <div className="add-lead-button-lower-div">
             <CustomButton
@@ -162,6 +189,17 @@ function LeadPanelView({ handleAddNewPage, getLeads, updateLeadPosition }) {
               onClick={handleOnClick}
             />
           </div>
+          <div className="help-div">
+            <CustomButton
+              type="button"
+              color="#2196f3"
+              textColor="white"
+              border="none"
+              value="?"
+              onClick={showHelp}
+            />
+          </div>
+          <div style={{ clear: "both" }} />
         </div>
         <table className="relative" id="table">
           <thead>
