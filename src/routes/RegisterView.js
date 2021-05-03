@@ -6,7 +6,7 @@ import Logo from "../components/Logo";
 import FormSection from "../components/FormSection";
 import CustomButton from "../components/CustomButton";
 
-function RegisterView({ handleSubmit, validatePassword }) {
+function RegisterView({ handleSubmit, validateRegisterForm }) {
   const [formState, setFormState] = useState({
     username: "",
     password: "",
@@ -27,27 +27,12 @@ function RegisterView({ handleSubmit, validatePassword }) {
   const handleSubmitWrapped = (event) => {
     event.preventDefault();
 
-    let valid = true;
-
-    if (formState.username === "") {
-      document.getElementById("username").classList.add("invalid");
-      valid = false;
-    }
-
-    if (!validatePassword(formState.password)) {
-      document.getElementById("password").classList.add("invalid");
-      valid = false;
-    }
-
-    if (
-      formState.confirmPassword === "" ||
-      formState.password !== formState.confirmPassword
-    ) {
-      document.getElementById("confirmPassword").classList.add("invalid");
-      valid = false;
-    }
+    const { valid, invalidFieldIds } = validateRegisterForm(formState);
 
     if (!valid) {
+      Object.values(invalidFieldIds).forEach((fieldId) =>
+        document.getElementById(fieldId)?.classList.add("invalid")
+      );
       return;
     }
 
