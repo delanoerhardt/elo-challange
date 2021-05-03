@@ -4,6 +4,7 @@ import {
   getLeadsFromLocalStorage as getLeads,
   sendLeadsFromLocalStorage as sendLeads,
 } from "../services/LeadManager";
+import { validateLeadForm } from "../models/LeadAddModel";
 
 function LeadAddController() {
   const history = useHistory();
@@ -23,7 +24,13 @@ function LeadAddController() {
     history.push("/lead-panel");
   };
 
-  return <LeadAddView handleSubmit={handleSubmit} goBack={goBack} />;
+  return (
+    <LeadAddView
+      handleSubmit={handleSubmit}
+      goBack={goBack}
+      validateLeadForm={validateLeadForm}
+    />
+  );
 }
 
 export default LeadAddController;

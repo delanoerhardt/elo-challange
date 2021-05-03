@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import FormSection from "../components/FormSection";
 import CustomButton from "../components/CustomButton";
 
-function LeadAddView({ handleSubmit, goBack }) {
+function LeadAddView({ handleSubmit, goBack, validateLeadForm }) {
   const [formState, setFormState] = useState({
     leadName: "",
     leadPhone: "",
@@ -62,29 +62,12 @@ function LeadAddView({ handleSubmit, goBack }) {
   const handleSubmitWrapped = (event) => {
     event.preventDefault();
 
-    let valid = true;
-
-    if (formState.leadName === "") {
-      document.getElementById("leadName").classList.add("invalid");
-      valid = false;
-    }
-
-    if (formState.leadPhone === "") {
-      document.getElementById("leadPhone").classList.add("invalid");
-      valid = false;
-    }
-
-    if (formState.leadEmail === "") {
-      document.getElementById("leadEmail").classList.add("invalid");
-      valid = false;
-    }
-
-    if (Object.values(checksState).filter((check) => check).length === 0) {
-      document.getElementById("options-table").classList.add("invalid");
-      valid = false;
-    }
+    const { valid, invalidFieldIds } = validateLeadForm(formState, checksState);
 
     if (!valid) {
+      Object.values(invalidFieldIds).forEach((fieldId) =>
+        document.getElementById(fieldId)?.classList.add("invalid")
+      );
       return;
     }
 
